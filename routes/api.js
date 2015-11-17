@@ -163,7 +163,6 @@ exports.addProduct=function (req,res) {
 		if(err)
 			res.send('some error occured');
 		else{
-            res.send('success');
             //we disable sending email Temporary
             sendEmail('Your addvertise at Ghapoon','You have added adevertisment successfully',data.email,
                 function (err,data) {
@@ -175,6 +174,8 @@ exports.addProduct=function (req,res) {
                 }
                   
             })
+            //res.send('success');
+            
         }
 			
 	})
