@@ -1,0 +1,51 @@
+	
+	<div class="panel">
+	  <div class="panel-body">
+	  	<!--<div class="col-sm-2" style="padding-top:150px">
+			<a class="btn"  href="#" ng-click="prev()">&lt prev</a>
+		</div>-->
+		<div class="row">
+			
+			<div class=" col-sm-12">
+			<!--zoom-image="./img/mashin_a.jpg" ng-elevate-zoom-->
+			<div style="padding:8px;width:300px;height:200px"  ng-cloak>
+				 <img  width="90%" height="100%"  alt="ghapoon" ng-click="selectOverly()"
+				 src="./img/{{selectedImage == '' ?  images[0].src : selectedImage.src}}"  ng-cloak/>
+			</div>
+			
+		    </div>
+		   
+		</div>
+	  
+	  <!-- <div class="col-sm-2" style="padding-top:150px">
+	    	 <a class="btn" href="#" ng-click="next()">next&gt</a>
+	    </div>-->
+	    <div>
+	    	 <div class="col-sm-4" ng-repeat='image in images'>
+	           	 <img width="70px" ng-click="selectImage(image)" height="54px" ng-src="./img/{{image.src}}" 
+	           	 style="float:left;padding:5px;" />
+	         </div>
+		</div>
+		
+		</div>
+	</div>
+
+	<div class="overlay overlay-hugeinc">
+	  <button type="button" class="overlay-close">Close</button>
+
+	  <nav>
+	   <!-- <ul>
+	      <li><a href="#">Home</a></li>
+	      <li><a href="#">About</a></li>
+	      <li><a href="#">Work</a></li>
+	      <li><a href="#">Clients</a></li>
+	      <li><a href="#">Contact</a></li>
+	    </ul>-->
+
+	    <ul>
+	    <p style="font-size:16pt;color:white;width:800px">{{description}}</p>
+	     <overlay-image images="images" ng-cloak/>
+	    </ul>
+	  </nav>
+	  </div>
+

@@ -1,0 +1,220 @@
+.ghapoon-background{
+    background-image: url("./images/background_color5.jpg")!important;
+}
+.alert_label{
+    color:#00e600;
+    font-weight:bold;
+}
+ .alert_danger{
+    color:#e60000;
+}
+.item{
+	position: relative;
+	height: 180px;
+	width:230px;
+	border-radius: 4px;
+}
+
+.item_img{
+	padding: 3px;
+	height:140px;
+	width: 220px;
+}
+.item_content{
+	padding: 2px;
+	color: blue;
+}
+.item_header{
+	width:230px;
+	background-color:light-green;
+    color:black;
+	padding-left: 2px;
+}
+
+.item_price{
+	padding-right: 1px;
+	float: right;
+	}
+.item_date{
+	padding-left: :3px;
+	color:#333;
+}
+.statusRow {
+    height:10px;
+    position:relative;
+}
+.categoryName{
+	
+}
+
+/* wcOverlay directive CSS styles */
+.overlayContainer { display: none;}
+.overlayBackground { top:0px; left:0px; padding-left:100px;position:absolute; z-index:1000;height:100%;width:100%;background-color:#808080;opacity:0.3;}
+.overlayContent { position:absolute; border: 1px solid #000; background-color:#fff; font-weight: bold;height: 100px;width: 300px;z-index:1000;text-align:center;}
+
+h1 {
+  text-align: center;
+  padding: 10px;
+  font-size: 40px;
+  color: #222;
+}
+
+
+.fixed_top{
+position:fixed;
+}
+
+ .black_overlay{
+            display: none;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+           /* background-color: orange;
+            background:url(../images/overlay1.png);*/
+            z-index:1001;
+            -moz-opacity: 0.8;
+            opacity:.80;
+            filter: alpha(opacity=80);
+            text-align: center;
+            position: relative;
+            position: fixed;
+            background: rgba(153,100,51,0.9);
+            font-size: 54px;
+            -webkit-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            transform: translateY(-50%);
+
+        }
+        .white_content {
+            display: none;
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            width: 70%;
+            height: 70%;
+            padding: 16px;
+            border: 16px solid orange;
+            background-color: white;
+            z-index:1002;
+            overflow: auto;
+            transition:height ease 300ms;
+        }
+
+        /* Overlay style */
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(153,100,51,0.9);
+    z-index: 120;
+}
+
+/* Overlay closing cross */
+.overlay .overlay-close {
+
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    right: 30px;
+    top: 50px;
+    overflow: hidden;
+    border: none;
+    background: url(../images/cross.png) no-repeat center center;
+    text-indent: 200%;
+    color: transparent;
+    outline: none;
+    z-index: 121;
+}
+
+/* Menu style */
+.overlay nav {
+    text-align: center;
+    position: relative;
+    top: 50%;
+    height: 60%;
+    font-size: 54px;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.overlay ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    display: inline-block;
+    height: 100%;
+    position: relative;
+}
+
+.overlay ul li {
+    display: block;
+    height: 20%;
+    height: calc(100% / 5);
+    min-height: 54px;
+}
+
+.overlay ul li a {
+    font-weight: 300;
+    display: block;
+    color: #fff;
+    -webkit-transition: color 0.2s;
+    transition: color 0.2s;
+}
+
+.overlay ul li a:hover,
+.overlay ul li a:focus {
+    color: #e3fcb1;
+}
+
+/* Effects */
+.overlay-hugeinc {
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: opacity 0.5s, visibility 0s 0.5s;
+    transition: opacity 0.5s, visibility 0s 0.5s;
+}
+
+.overlay-hugeinc.open {
+    opacity: 1;
+    visibility: visible;
+    -webkit-transition: opacity 0.5s;
+    transition: opacity 0.5s;
+}
+
+.overlay-hugeinc nav {
+    -webkit-perspective: 1200px;
+    perspective: 1200px;
+}
+
+.overlay-hugeinc nav ul {
+    opacity: 0.4;
+    -webkit-transform: translateY(-25%) rotateX(35deg);
+    transform: translateY(-25%) rotateX(35deg);
+    -webkit-transition: -webkit-transform 0.5s, opacity 0.5s;
+    transition: transform 0.5s, opacity 0.5s;
+}
+
+.overlay-hugeinc.open nav ul {
+    opacity: 1;
+    -webkit-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+}
+
+.overlay-hugeinc.close nav ul {
+    -webkit-transform: translateY(25%) rotateX(-35deg);
+    transform: translateY(25%) rotateX(-35deg);
+}
+
+@media screen and (max-height: 30.5em) {
+    .overlay nav {
+        height: 70%;
+        font-size: 34px;
+    }
+    .overlay ul li {
+        min-height: 34px;
+    }
+}

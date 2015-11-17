@@ -1,0 +1,73 @@
+<div class="fixed_top">
+		<!--<div class="col-sm-4">
+			
+		</div>-->
+		<div class="col-sm-11 col-md-11" >
+			<div class="panel">
+				<div class='panel-heading'>
+            		<h3 class="text-center" >Signup</h3>
+            	</div>
+	            <div class="panel-body">
+	                <form method="post" name="signupForm" ng-submit="signup()">
+	                    <div class="form-group has-feedback"
+	                        ng-class="{'has-success':signupForm.displayName.$dirty&&signupForm.displayName.$valid,'has-error':signupForm.displayName.$dirty&&signupForm.displayName.$invalid}">
+	                        <span class="form-control-feedback icon_profile"></span>
+	                        <input class="form-control" name="displayName" id="displayName" ng-model="name"
+	                             placeholder="Given Name" autofocus required/>
+	                        
+	                        
+	                        <!--for using mg-message must add using of ngMessage to app.js and angular-message.js in index.html -->
+	                        <div class="help-block text-danger" ng-if="signupForm.displayName.$dirty" 
+	                            ng-messages="signupForm.displayName.$error">
+	                            <div ng-message="required">Name is required</div>
+	                        </div>
+	                    </div>
+
+	                    <div class="form-group has-feedback"
+	                     ng-class="{'has-success':signupForm.email.$dirty&&signupForm.email.$valid,
+	                     'has-error':signupForm.email.$dirty&&signupForm.email.$invalid}">
+	                        <span class="form-control-feedback icon_briefcase"></span>
+	                        <input class="form-control" name="email" id="email" ng-model="email" type="email"
+	                             placeholder="Email" required unique-email/>
+	                        
+	                        <div class="help-block text-danger" ng-if="signupForm.email.$dirty"
+	                             ng-messages="signupForm.email.$error">
+	                            <div ng-message="required">Email is required</div>
+	                            <div ng-message="email">Invalid email address</div>
+	                            <div ng-message="unique">Email is taken</div>
+	                        </div>
+	                    </div> 
+	                   <div class="form-group has-feedback" 
+	                        ng-class="{'has-success':signupForm.password.$dirty&&signupForm.password.$valid,'has-error':signupForm.password.$dirty&&signupForm.password.$invalid}">
+	                       <span class="form-control-feedback icon_key_alt"></span> 
+	                       <input class="form-control" name="password" id="password" type="password"
+	                             ng-model="password" placeholder="Password" required password-strength/>
+	                        
+	                        <div class="help-block text-danger" ng-if="signupForm.password.$dirty"
+	                             ng-messages="signupForm.password.$error">
+	                            <div ng-message="required">Password is Required</div>
+	                        </div>
+	                    </div>
+	                    <div class="form-group has-feedback" 
+	                        ng-class="{'has-success':signupForm.confirmPassword.$dirty&&signupForm.confirmPassword.$valid,'has-error':signupForm.confirmPassword.$dirty&&signupForm.confirmPassword.$invalid}">
+	                        <span class="form-control-feedback icon_key_alt"></span> 
+	                        <input class="form-control" name="confirmPassword" id="confirmPassword" type="password"
+	                             ng-model="confirmPassword" placeholder="Confirm Password" required repeat-password="password"/>
+	                        <div class="help-block text-danger" ng-if="signupForm.confirmPassword.$dirty"
+	                             ng-messages="signupForm.confirmPassword.$error">
+	                            <div ng-message="required">Confirm Password is Required</div>
+	                            <div ng-message="repeat">Repeat password is not the same</div>
+	                        </div>
+	                    </div>
+	                    
+	                    <button class="btn btn-primary btn-lg btn-block" type="submit" 
+	                        ng-disabled="signupForm.$invalid" >Signup</button><br>
+	                        <p class="text-center text-muted">You have already has and account? <a href="/login">Log In</a></p>
+	                </form>
+	            </div>
+	        </div>
+		</div>
+		<!--<div class="col-sm-4">
+			
+		</div>-->
+</div>

@@ -1,0 +1,42 @@
+<div class="fixed_top"  style="z-index:107;">
+<div class="col-sm-11 col-md-11" >
+<div class="">
+
+<slider images="images" description="description" ng-cloak/>
+ </div>
+ <div class="panel" >
+		<div class="panel-heading" >
+			
+			<i class="icon_profile"></i><span>Calling Information {{product.name}}</span>
+		</div>
+		<div class="panel-body">
+			<form name="calling" method="post" ng-submit="sendMessage()">
+				
+				<div class="from-group">
+					<label class="" ><i class="icon_phone"></i>Number of seller </label>
+					<label class="">{{product.phone}}</label>
+				</div>
+				<div class="form-group">
+					<label class=''><i class="icon_mail_alt"></i>Send Message to Seller</label>
+				</div>
+				
+				<div class="form-group has-feedback"
+				 ng-class="{'has-error':calling.BuyerMessasge.$dirty && calling.BuyerMessasge.$invalid,
+				  'has-success':calling.BuyerMessasge.$dirty && calling.BuyerMessasge.$valid}">
+					<input class="form-control" type="text" id="BuyerMessasge" name="BuyerMessasge"
+					 placeholder="Your Message" title="Your Message" ng-model="BuyerMessasge" maxlength ="50" required/>
+					 <div class="help-block text-danger" ng-if="calling.BuyerMessasge.$dirty"
+					   ng-messages="calling.BuyerMessasge.$error">
+					   <div ng-message="required">Message is required</div>
+					</div>
+				</div>
+				<div class="row">
+					<input class="btn btn-block btn-primary"  value="Send" type="submit" 
+					  ng-disabled="calling.$invalid || !currentUser"/> 
+				</div>
+				
+			</form>
+		</div>
+	</div>
+</div>
+</div>

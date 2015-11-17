@@ -1,0 +1,17 @@
+<div  class="panel" ng-cloak>
+  <div class="panel-body ghapoon-background" style="height:70px;padding-top:4px;">
+   <div class="col-sm-1" > <a ng-show='index > 0' ng-click="setpage({data:index})">Previous</a></div>
+   <div class="col-sm-11">
+       <div class="btn-group" style="padding:2px;" ng-repeat="page in pages">
+      
+         <a ng-click="setpage({ data : page })" 
+         ng-class="{'btn btn-primary ': index+1  ==page , 'btn btn-default' : index +1  != page }">
+         {{page}}
+       </a>
+       
+      </div>
+    <a ng-show='index +1 < nopages' ng-click="setpage({data:index + 2})">Next</a>
+   </div>
+    <p style="padding-left:70px;"><b>{{counts > perpage ? perpage : counts }}<b> of <b>{{counts}}<b></p>
+  </div>
+</div>

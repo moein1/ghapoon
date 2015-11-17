@@ -1,0 +1,33 @@
+<div class="col-md-11 col-sm-11">
+	<div class="panel">
+		<div class="panel-heading">
+			<h3 class="text-content">Add Category</h3>
+		</div>
+		<div class="panel-body">
+			<form method="post" name="addCategoryForm" ng-submit="addCategory()">
+				<div class="has-feedback form-group"
+				ng-class="{'has-success':addCategoryForm.category.$dirty && addCategoryForm.category.$valid,
+			              'has-error':addCategoryForm.category.$dirty && addCategoryForm.category.$invalid}">
+			              <input type="text" ng-model="newCategory" id="category" name="category" class="form-control" 
+			                title="Category" placeholder="Category" required autofocus />
+			               <div class="help-block text-danger" ng-if="addCategoryForm.category.$dirty" 
+			               ng-messages="addCategoryForm.category.$error">
+			               		<div ng-message="required">Categorty is required</div>
+			               </div>
+				</div>
+
+				<div class="has-feedback form-group"
+				 ng-class="{'has-success':addCategoryForm.group.$dirty && addCategoryForm.group.$valid ,
+				  'has-error' : addCategoryForm.group.$dirty && addCategoryForm.group.$invalid}">
+				   <input type="text" ng-model="newGroup" id="group" name="group" class="form-control"
+				    title="Group" placeholder = "Group" required />
+				    <div class="help-block text-danger" ng-if="addCategoryForm.group.$dirty" 
+				    ng-messages="addCategoryForm.group.$error">
+				    	<div ng-message="required">Group is required</div>
+				    </div>
+				</div>
+				<input type="submit" class="btn btn-primary btn-block" value="Add Category" ng-disabled="addCategoryForm.$invalid" />
+			</from>
+		</div>
+	</div>
+</div>

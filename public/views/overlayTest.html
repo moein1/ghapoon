@@ -1,0 +1,19 @@
+  <div class="panel" style="height:500px" >
+  	<div class="panel-body">
+        <p style="border:1px solid gray;">Pets are great fun. Though I prefer dogs, cats are more popular..<br/> 
+            <button ng-click="lightStyle = displayBlock;fadeStyle = displayBlock">Kittens!</button>
+            <br/>            
+        </p>
+        <div style="border:1px solid gray;" ng-style="lightStyle" ng-class="overlayClass">
+            Kitten Content
+            <button ng-click="lightStyle = displayNone;fadeStyle = displayNone">Close</button> 
+			<br/>  
+			<img src="http://placekitten.com.s3.amazonaws.com/homepage-samples/96/139.jpg">
+			<img src="http://placekitten.com.s3.amazonaws.com/homepage-samples/96/140.jpg">
+			<img src="http://placekitten.com.s3.amazonaws.com/homepage-samples/200/138.jpg"> 
+        </div>
+
+        <div ng-style="fadeStyle" class="black_overlay">
+        </div>
+      </div>
+  </div>

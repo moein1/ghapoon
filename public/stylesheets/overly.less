@@ -1,0 +1,14 @@
+ modal { position:absolute; display:block; top:0; left:0; right:0;
+        @buffer:75px;
+        @animation-speed:250ms;
+        >div.overlay { background:black; position:fixed; opacity:0.6; top:0; right:0; bottom:0; left:0; z-index:2;
+                &.show { visibility:visible; opacity:0.6; transition:opacity ease @animation-speed; }
+                &.hide { visibility:hidden; opacity:0; transition:visibility 0s @animation-speed, opacity ease @animation-speed; }
+        }
+        >div.content { position:absolute; left:0; right:0; margin:auto; background:white; border-radius:3px; width:500px; padding:15px; z-index:3; top:@buffer; transition:transform ease @animation-speed; 
+        transform:translate3d(0, ~"calc(-100% - 75px)", 0);
+              /*  &.show { .transform(translate3d(0, 0, 0)); }*/
+
+                /* inner modal content styles go here! */
+        }
+}

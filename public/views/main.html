@@ -1,0 +1,113 @@
+   <div class="row" style="z-index:95;"> 
+    
+    <div  class="col-sm-3 col-md-3 slide-animation-container" >
+      <div class="slide-animation" ui-view>
+     </div>
+    
+   </div>
+   <div class="col-sm-9 col-md-9" style="z-index:95;">
+      <div class="panel">
+      <div class="panel-heading ghapoon-background" >
+        <div class="table">
+          <div class="row">
+            <div class="col-sm-3 col-md-3" ng-repeat="cat in category_count" 
+            style="padding:5px 15px;border:1px solid #636600;">
+             <a ng-class="{'': cat._id!=category , 'btn btn-default' : cat._id == category}"
+              ng-click="Category_product(cat._id)" style="color:#636600;font-size:12pt;padding:3px;">{{cat._id}}</a> 
+             <a ng-class="{'':cat._id != category ,'btn btn-default':cat._id == category}" 
+              ng-click="Category_product(cat._id)" 
+              style="color:#636600;font-size:12pt;border:1px solid gray;border-radius:2px;padding:3px;">
+               {{cat.total}}</a> 
+            </div>
+          </div>
+        </div>
+
+      </div>
+    <div class="panel-body ghapoon-background">
+      <div class="table" ng-if="categorySelected">
+        <div class="row">
+          <div class="col-sm-3 col-md-3" ng-repeat="gro in group_count" 
+          style="padding:5px 15px;border:1px solid #949900;">
+           <a style="color:#949900;font-size:11pt;padding:5px;" 
+           ng-class="{'': gro._id!=group , 'btn btn-default' : gro._id == group}"
+           ng-click="group_category(gro._id)">{{gro._id}}</a>
+           <a style="color:#949900;font-size:11pt;padding:5px;"
+           ng-class="{'': gro._id!=group , 'btn btn-default' : gro._id == group}"
+            ng-click="group_category(gro._id)">{{gro.total}}</a>
+          </div>
+        </div>
+      </div>
+      <div class="table">
+        <div class="row" style="padding:8px;border:1px solid #979900;">
+         
+          <div class="col-sm-3 col-md-3">
+            <select class="form-control" name="category" id="category" ng-model="newProduct.category" 
+              title="category"  placeholder="Category" required ng-change="changeCat()" 
+              ng-options= 'value.id as value.group group by value.category for value in catOptions' >
+              <option value>All Category</option>
+          </select>
+          </div>
+          <div class="col-sm-3 col-md-3">
+            <select class="form-control " ng-model="newProduct.province" id="province"
+               name="province" ng-change='changeCityList()' placeholder="Province" title="Province" required 
+               ng-options="value.id as value.province for value in proOptions">
+              <option value>All Province</option>
+          
+        </select>
+          </div> 
+           <div class="col-sm-3 col-md-3">
+            <input name="filter" id="filter" class="form-control" ng-model="search" 
+              placeholder="Find Product" title="Find Product" maxlength="25" required/>
+              <span>whole words</sapn>&nbsp;&nbsp;<input type="checkbox" id="whole" name="whole" 
+                title="Search whole words" ng-model="whole" />
+          </div>     
+          <div class="col-sm-3 col-md-3">
+            <button type="submit" class="btn btn-primary" ng-click="searchProduct()"  value="Find" ng-disabled="filterForm.filter.$invalid"><i class="icon_search"></i></button>
+          </div>
+
+        </div>
+      </div>
+      <div class="table">
+        <div class="row">
+           <div class="col-sm-3 col-md-3">
+            <select name="sorting" id="sorting" class="form-control" ng-model="sort" ng-change="sortproduct()">
+              <option value>Please Select Sorting</option>
+              <option value="Name">Name</option>
+              <option value="Cheapest">Cheapest</option>
+              <option vlaue="Most Expensive">Most Expensive</option>
+              <option value="Oldest">Oldest</option>
+              <option value="Newest">Newest</option>
+            </select>
+          </div>
+          <div class="col-sm-9 col-md-9">
+            <custom-pager pages="pages" counts="counts"  index="pageIndex" 
+            perpage="productPerPage" nopages="noOfPages" setpage="setPage(data)" ng-cloak />
+          </div>
+        </div>
+     </div>
+    <div class="table">
+    <div class="row" >
+      <div class=" col-sm-3 col-md-3" ng-repeat="product in products" style="padding:4px;height:220px" ng-cloak>
+        <div class="item" >
+          <div class="item_header" >
+              <a ui-sref=".details({product:product._id})" style="color:black;">
+                {{product.name}}
+              </a>
+          </div>
+              <a ui-sref=".details({product:product._id})" style="color:black;">
+                <img class="item_img" ng-src="./img/{{product.image[0]}}" alt="ghapoon" ngCloak/>
+              </a>
+           
+          <div class="item_price" ngCloak>{{product.price|currency}}</div>
+          
+          <div class="item_date" ngCloak>{{product.AddDate|fromNow}}</div>
+          <input type="button" class="btn btn-primary" value ="Add To Basket" ng-if="currentUser" ng-click="AddToBasket(product)" />
+          
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+</div>
+

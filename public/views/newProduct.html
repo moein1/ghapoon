@@ -1,0 +1,161 @@
+<div class="panel">
+	<div class="panel-heading">
+		<h3>Add Your Advertisment freedly</h3>
+	</div>
+	<div class="panel-body">
+	<form name="addProduct" class="form-horizontal" method="post">
+	  
+		<div class="form-group has-feedback" 
+		ng-class="{'has-success':addProduct.name.$dirty&&addProduct.name.$valid,'has-error':addProduct.name.$dirty && addProduct.name.$invalid}">
+			<label class="control-label col-sm-2" for="name">Name</label>
+			<div class="col-sm-10">
+				<input class="form-control" ng-model="newProduct.name" id="name" name="name" title="Title"
+			      placeholder="Advertisment Title" for="name" type="text" autofocus required/>
+				<div class="text-danger help-block" ng-if="addProduct.name.$dirty" ng-messages="addProduct.name.$error">
+					 <div ng-message="required">
+					 	Title is required
+					 </div>
+				</div>
+			</div>
+				
+		</div>
+		<div class="form-group has-feedback"
+		ng-class="{'has-error':addProduct.description.$dirty && addProduct.description.$invalid , 'has-success':addProduct.description.$dirty && addProduct.description.$valid}">
+			<label class=" col-sm-2 control-label" for="description">Description</label>
+            <div class="col-sm-10">
+              <input class="form-control" ng-model="newProduct.description" id="description"
+			  name="description" type="text" title="Description" placeholder="Description"  required/>
+			
+				<div class="text-danger help-block" ng-if="addProduct.description.$dirty"
+				 ng-messages="addProduct.description.$error">
+					 <div ng-message="required">
+					   Description is required
+					</div>
+				</div>
+            </div>
+			 
+		</div>
+
+		<div class="form-group has-feedback"
+		 ng-class="{'has-error':addProduct.category.$dirty && addProduct.category.$invalid,
+		 'has-success':addProduct.category.$dirty && addProduct.category.$valid}">
+			<label class="control-label col-sm-2" for="category">Category</label>
+			<div class="col-sm-10">
+				<select class="form-control" name="category" id="category" ng-model="newProduct.category" 
+			    title="category"  placeholder="Category" required ng-change="changeCat()" 
+			    ng-options= 'value.id as value.group group by value.category for value in catOptions' >
+			        <option value>Select Category</option>
+			    </select>
+			
+				<div ng-if="addProduct.category.$dirty" ng-messages="addProduct.category.$error" class="text-danger help-block">
+					<div ng-message="required">
+						Catergory is Require
+					</div>
+				</div>
+			</div>
+		</div>
+        <div class="clearfix">
+        </div>
+		<div class="form-group has-feedback"
+		ng-class="{'has-error':addProduct.price.$dirty && addProduct.price.$invalid , 'has-success' :
+		 addProduct.price.$dirty && addProduct.price.$valid}">
+		 	<label class="control-label col-sm-2" for="price">Price</label>
+		 	<div class="col-sm-10">
+			<input class="form-control " ng-model="newProduct.price" 
+			title="Price" type="number" placeholder="Price" id="price" name="price" required/>
+			<div class="help-block text-danger" ng-messages="addProduct.price.$error" ng-if="addProduct.price.$dirty">
+				<div ng-message="required">
+					Price Is Required
+				</div>
+			</div>
+		</div>
+		</div>
+
+		<div class="form-group has-feedback"
+		ng-class="{'has-error':addProduct.province.$dirty && addProduct.province.$invalid ,
+		'has-success':addProduct.province.$dirty && addProduct.province.$valid}">
+		  <label for="province" class="control-label col-sm-2">Province</label>
+		  <div class="col-sm-10">
+		  	<select class="form-control " ng-model="newProduct.province" id="province"
+		  	 name="province" ng-change='changeCityList()' placeholder="Province" title="Province" required 
+		  	 ng-options="value.id as value.province for value in proOptions">
+		  	    <option value>Select Province</option>
+		  		
+		  	</select>
+		  	<div class="help-block text-danger" ng-messages="addProduct.province.$error"
+		  	ng-if="addProduct.province.$dirty">
+		  	 <div ng-message="required">
+		  	 	Province is required
+		  	 </div>
+		   </div>
+		  </div>
+	    </div>
+
+	    <div class="form-group has-feedback"
+	    ng-class="{'has-error':addProduct.city.$dirty && addProduct.city.$invalid ,
+	     'has-success':addProduct.city.$dirty && addProduct.city.$valid}">
+	     <label class="col-sm-2 control-label" for="city">City</label>
+	     <div class="col-sm-10">
+	     	<select  ng-model="newProduct.city" id="city" title="city" name="city" required 
+	     	class="form-control">
+	     		<option value>Select City</option>
+	     	</select>
+	     	<div class="help-block text-danger" ng-messages="addProduct.city.$error"
+	     	 ng-if="addProduct.city.$dirty">
+	     	  <div ng-message="required">City is required</div>
+	     	</div>
+	     </div>
+	    </div>
+
+		<div class="form-group has-feedback">
+			<label class="col-sm-2 control-label">Upload File</label>
+            <div class="col-sm-10 uploadzone">
+            <input ng-disabled="currentImages.length >= 3" type="file" class="form-control" 
+            id="uploadFile" placeholder="File upload" name="file" 
+              onchange="angular.element(this).scope().uploadFile(this.files)" /><br />
+             <!-- <span class="text-center" ng-show="uploadMessage">{{uploadMessage}}</span>-->
+               <div ng-repeat='image in currentImages'>
+               	 <img height="200" width="200" ng-src="../img/{{image}}" style="float:left;padding:5px;" />
+               	 <a ng-click="deleteImage(image)" title="Delete" ><i class="icon_close_alt2" ></i></a>
+               </div>
+            </div>
+                
+        </div>
+
+      <!--  <div class="form-group has-feedback"
+        ng-class="{'has-error':addProduct.email.$dirty && addProduct.email.$invalid ,
+        'has-success':addProduct.email.$dirty && addProduct.email.$valid}">
+        	<label class="col-sm-2 control-label" for="email">Email</label>
+        	<div class="col-sm-10">
+        		<input type="email"  class="form-control input-lg" id="email" name="email"  ng-model="newProduct.email" 
+        		placeholder="Email" title="Email" required/>
+        		 <div class="help-block text-danger" ng-messages="addProduct.email.$error"
+        		  ng-if="addProduct.email.$dirty">
+        		  	<div ng-message="required">Email is required</div>
+        		  	<div ng-message="email">Email is not valid</div>
+        		 </div>
+        	</div>
+        </div>-->
+
+        <div class="form-group has-feedback"
+         ng-class="{'has-error':addProduct.phone.$dirty && addProduct.phone.$invalid,
+            'has-success':addProduct.phone.$dirty && addProduct.phone.$valid}">
+            <label class="col-sm-2 control-label">Phone</label>
+            <div class="col-sm-10">
+            	<input type="phone" class="form-control" title="Phone" id="phone" name="phone"
+            	 ng-model="newProduct.phone" placeholder="Phone" required />
+
+            	<div class="help-block text-danger" ng-messages="addProduct.phone.$error"
+            	 ng-if="addProduct.phone.$dirty">
+            	 	<div ng-message="required">Phone is required</div>
+            	</div>
+            </div>
+        </div>
+		<div class="btn-group" style="padding-left:150px;">
+			<input ng-click="insertProduct()" class="btn btn-primary btn-lg"  ng-disabled="addProduct.$invalid" value="Add">
+			<input  ng-click="cancel()" class="btn-default btn-lg" value="Cancel" />
+		</div>
+	 
+	 </form>
+  </div>
+</div>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+	<head>
+     <!--this line is very important specialy in routing with special parametes and firgeting couse unexpected matters-->
+      <base href="/" />
+      <meta name="author" content="mohammad" />
+      <meta charset='utf-8' />
+      <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+      <meta name="viewport" content="width=device-width,initial-scale=1" />
+      <title>Commercial</title>
+      <link rel="icon" type="image/png" href="images/bag1.jpg">
+      <!--<link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.css">-->
+     
+      <!--we shuld add font directory public diretory and elegant-icons need it-->
+      <!--<link rel="stylesheet" type="text/css" href="stylesheets/elegant-icons-style.css">
+      
+      <link rel="stylesheet" type="text/css" href="stylesheets/animations.css">
+
+      <link rel="stylesheet" type="text/css" href="stylesheets/EcommerceStyle.css">-->
+      <link rel="stylesheet" type="text/css" href="stylesheets/bootstrap-theme.css">
+      <link rel="stylesheet" type="text/css" href="stylesheets/styles.min.css">
+      <!--[if lt IE 8]>
+        <link rel="stylesheet" href="/Content/css/bootstrap-ie7.css" type="text/css"/>
+      <![endif]-->
+      <!--for dropdown menu we need style-nice.css-->
+      <link rel="stylesheet" type="text/css" href="stylesheets/style-nice.css">
+      
+     <!-- <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css">-->
+      <!--<link rel="stylesheet" type="text/less" href="stylesheets/overly.less">-->
+      <style type="text/css">
+      .ghapoon-background{
+           background-image: url("./images/background_color5.jpg")!important;
+        }
+        .ghapoon-background1{
+           background-image: url("./images/background_color6.jpg")!important;
+        }
+      </style>
+	</head>
+	<body ng-app='ghapoon' >
+	  <header>
+	      <nav class="navbar navbar-default navbar-fixed-top ghapoon-background" 
+        ng-controller="navbarCtrl" role="navigation" ng-cloak>
+
+	      		<div class="navbar-header" >
+	               <a ui-sref="home" class="navbar-brand ">
+                    <img src="./images/background_color8.jpg">
+	               </a>
+	      		</div>
+	      		<ul class="navbar-nav nav">
+			      	<li><a ui-sref="home" class="btn btn-default btn-lg">Home</a></li>
+              <li><a ui-sref="home.addCategory" class="btn btn-default btn-lg" href="javascript:void(0)"
+                ng-if="isAdmin()">Add Category</a></li>
+              <li><a ui-sref="home.addCity" class="btn btn-default btn-lg" href="javascript:void(0)"
+                ng-if="isAdmin()">Add City</a></li>
+		        </ul>
+		        
+			    <ul class="nav navbar-nav pull-right" ng-if="currentUser.name.length > 0">
+			      	
+			      <li><a ui-sref="addProduct" class="btn btn-default btn-lg">Add Your favourite Add</a></li>
+            <li><a href="javascript:void(0)" class="btn btn-default btn-lg" ng-click="logout()">
+                  <i class="icon_key"></i>Logout</a>
+            </li>
+            <li>
+              <a ui-sref="shoppingBasket" class="btn btn-default" ng-if="shoppingBasket.length > 0">
+                <i class="icon_balance"></i>
+                <span class="badge bg-important" >{{shoppingBasket.length}}</span>
+              </a>
+            </li>
+            <li class="dropdown">
+              <a href="/" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="icon_mail_alt"></i>
+                <span class="badge bg-important" ng-if="inbox.length > 0">{{inbox.length}}</span>
+              </a>
+              <ul class="dropdown-menu extended inbox">
+                <div class="notify-arrow-blue notify-arrow">
+                </div>
+                <div ng-switch on="inbox.length > 0">
+                  <li><p class="blue" ng-switch-when="true">You have {{inbox.length}} new messages</p></li>
+                  <li><p class="blue" ng-switch-when="false">You do not have any new messages</p></li>
+                </div>
+                <li>
+                  <line-break list="inbox" ></line-break>
+                    </a>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="/" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="icon_archive"></i>
+                <span class="badge bg-important" ng-if="outbox.length > 0">{{outbox.length}}</span>
+              </a>
+              <ul class="dropdown-menu extended inbox">
+                <div class="notify-arrow-blue notify-arrow"></div>
+                <div ng-switch on="outbox.length > 0">
+                  <li><p class="blue" ng-switch-when="true">You sent {{outbox.length}} new message </p></li>
+                  <li><p class="blue" ng-switch-when="false" >You have not sent any message</p></li>
+                </div>
+                <li>
+                  <line-break list="outbox" ></line-break>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown">
+                <a data-toggle="dropdown" class="dropdown-toggle" href="/">
+                    <span class="username" ng-bind="currentUser.name"></span>
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu extended logout">
+                    <div class="log-arrow-up"></div>
+                    <li class="eborder-top">
+                        <a href="/"><i class="icon_profile"></i>My profile</a>
+                    </li>
+                    <li >
+                        <a ng-disabled="shoppingBasket.length < 1" ui-sref="shoppingBasket">
+                          <i class="icon_mail_alt"></i>My Shopping Basket</a>
+                    </li>
+                    
+                    <li>
+                        <a href="javascript:void(0)" ng-click="logout()"><i class="icon-key-alt"></i>Logout</a>
+                    </li>
+                </ul>
+            </li>
+
+			   </ul>
+         <ul class="nav navbar-nav pull-right" ng-if="!currentUser">
+           <li><a ui-sref="home.signup" class="btn btn-default btn-lg">
+            <i class="glyphicon glyphicon-pencil"></i>Signup</a>
+           </li>
+           <li><a ui-sref="home.login" class="btn btn-default btn-lg">
+            <i class="glyphicon glyphicon-cloud"></i>Login</a></li>
+         </ul>
+         <!--this place has been added for self create alerting-->
+          <div  class="statusRow">
+            <div class="alert_label" data-ng-class="alertClass" data-ng-show="alertStatus">
+              <span class="glyphicon-thumbs-up glyphicon"></span>
+              <b ng-bind="alertMesage"></b>
+            </div>
+         </div>
+	      </nav>
+      </header>
+
+      <div class="panel ghapoon-background">
+        <div class="panel-heading">
+          
+        </div>
+        <div class="panel-body" style="padding-top:50px;">
+          <div>
+               <!--we use ngAnimate and angular-animation as js class and animation.ccs for acting this animation-->
+                 <div class="slide-animation-container">
+                   <div class="slide-animation" ui-view></div>
+                 </div>
+                 <div data-wc-overlay data-wc-overlay-delay="300" >
+                  
+                    <br /><img src="images/spinner.gif" />&nbsp;&nbsp;Loading
+                 </div>
+          </div>
+          <div class="footer" style="padding-left:30%">
+            <p>Copyright (c) 2015 powerd by <b>Mohammad Karimi</b></p>
+          </div>
+        </div>
+        
+      </div>     
+     
+     <script type="text/javascript" src="app.min.js"></script>
+   
+      
+	</body>
+</html>

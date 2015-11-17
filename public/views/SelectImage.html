@@ -1,0 +1,17 @@
+<div>			
+	<div class=" col-sm-12">
+		<div  ng-cloak>
+			 <img height="400" width="500"  alt="ghapoon" 
+			 src= "./img/{{selectedImage == '' ?  images[0].src : selectedImage.src}}" 
+			  ng-cloak/>
+		</div>
+    </div>
+	<div>
+		 <div class="col-sm-3" ng-repeat='image in images'>
+	       	 <img width="130px" ng-click="selectImage1(image)" height="90px" ng-src="./img/{{image.src}}" 
+	       	 style="float:left;padding:5px;" />
+	     </div>
+	</div>
+</div>
+		
+		

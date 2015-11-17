@@ -1,0 +1,48 @@
+<div class="panel panel-primary">
+  <table class="table table-striped table-primary table-hover">
+    <tr>
+      <th>Product description</th>
+      <th>Price</th>
+      <th>Image</th>
+    </tr>
+    <tr ng-repeat="product in products">
+      <td class="col-sm-4">
+        {{product.name}},{{product.description}}
+      </td>
+      <td class="col-sm-2">{{product.price}}</td>
+      <td class="col-sm-2"><a ng-click="selectImage(product)" ><img height="50px" src="./img/{{product.image[0]}}" alt="ghapoon" /></a></td>
+    </tr>
+  </table>
+</div>s
+
+<!--<div class="panel" >
+   <div class="panel-body">
+        <div style="border:1px solid gray;" ng-style="lightStyle" ng-class="overlayClass">
+           
+            <button ng-click="lightStyle = displayNone;fadeStyle = displayNone">Close</button>
+            <button type="button" class="overlay-close">Close</button>
+            <slider images="images" ng-cloak/>
+            
+        </div>
+
+        <div ng-style="fadeStyle" class="black_overlay">
+        </div>
+      </div>
+</div>-->
+<!--<p><button id="trigger-overlay" type="button">Open Overlay</button></p>-->
+<div class="overlay overlay-hugeinc">
+  <button type="button" class="overlay-close">Close</button>
+  <nav>
+   <!-- <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Work</a></li>
+      <li><a href="#">Clients</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>-->
+    <ul>
+     <overlay-image images="images" ng-cloak/>
+    </ul>
+  </nav>
+  </div>
+    
